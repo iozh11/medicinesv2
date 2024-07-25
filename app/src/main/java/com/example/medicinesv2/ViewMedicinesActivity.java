@@ -16,7 +16,6 @@ public class ViewMedicinesActivity extends AppCompatActivity {
     Button btnAddMedicines;
     DatabaseManager dbManager;
     TableLayout tableLayout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
