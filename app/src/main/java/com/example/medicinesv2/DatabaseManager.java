@@ -38,8 +38,14 @@ public class DatabaseManager {
     }
 
     public Cursor fetch() {
-        String[] columns = new String[]{DatabaseHelper.MED_ID, DatabaseHelper.MED_NAME, DatabaseHelper.MED_DATE_OF_MANUFACTURE,
-                DatabaseHelper.MED_BEFORE_DATE, DatabaseHelper.MED_STORAGE, DatabaseHelper.MED_DESCRIPTION};
+        String[] columns = new String[]{
+                DatabaseHelper.MED_ID,
+                DatabaseHelper.MED_NAME,
+                DatabaseHelper.MED_DATE_OF_MANUFACTURE,
+                DatabaseHelper.MED_BEFORE_DATE,
+                DatabaseHelper.MED_STORAGE,
+                DatabaseHelper.MED_DESCRIPTION
+        };
         return database.query(DatabaseHelper.DATABASE_TABLE, columns, null, null, null, null, null);
     }
 
@@ -51,6 +57,20 @@ public class DatabaseManager {
         contentValues.put(DatabaseHelper.MED_STORAGE, medstorage);
         contentValues.put(DatabaseHelper.MED_DESCRIPTION,meddescription);
         return database.update(DatabaseHelper.DATABASE_TABLE, contentValues, DatabaseHelper.MED_ID + "=" + _id, null);
+    }
+
+    public Cursor fetchById(long id) {
+        String[] columns = new String[] {
+                DatabaseHelper.MED_ID,
+                DatabaseHelper.MED_NAME,
+                DatabaseHelper.MED_DATE_OF_MANUFACTURE,
+                DatabaseHelper.MED_BEFORE_DATE,
+                DatabaseHelper.MED_STORAGE,
+                DatabaseHelper.MED_DESCRIPTION
+        };
+        String select = DatabaseHelper.MED_ID + " = ?";
+        String[] selectionArgs = new String[] { String.valueOf(id) };
+        return database.query(DatabaseHelper.DATABASE_TABLE, columns, select, selectionArgs, null, null, null);
     }
 
     public void delete(long _id) {

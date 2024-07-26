@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mainscreen"
-    tools:context=".AddMedicinesActivity">
+    tools:context=".UpdateItemActivity"
+    android:background="@drawable/mainscreen">
 
     <TextView
-        android:id="@+id/text_add_medicines"
+        android:id="@+id/text_update_medicines"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="@color/sprites"
         android:padding="15dp"
-        android:text="Добавить лекарство"
+        android:text="Изменить данные"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/nameAdd"
+        android:id="@+id/nameUpdate"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="25dp"
@@ -34,15 +34,15 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:textColor="@color/sprites"
-        app:layout_constraintBottom_toTopOf="@+id/date_of_manufactureAdd"
+        app:layout_constraintBottom_toTopOf="@+id/date_of_manufactureUpdate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_add_medicines"
+        app:layout_constraintTop_toBottomOf="@+id/text_update_medicines"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
-        android:id="@+id/date_of_manufactureAdd"
+        android:id="@+id/date_of_manufactureUpdate"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="25dp"
@@ -53,14 +53,14 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:textColor="@color/sprites"
-        app:layout_constraintBottom_toTopOf="@+id/before_dateAdd"
+        app:layout_constraintBottom_toTopOf="@+id/before_dateUpdate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameAdd" />
+        app:layout_constraintTop_toBottomOf="@+id/nameUpdate" />
 
     <EditText
-        android:id="@+id/before_dateAdd"
+        android:id="@+id/before_dateUpdate"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="25dp"
@@ -71,14 +71,14 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:textColor="@color/sprites"
-        app:layout_constraintBottom_toTopOf="@+id/storageAdd"
+        app:layout_constraintBottom_toTopOf="@+id/storageUpdate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_of_manufactureAdd" />
+        app:layout_constraintTop_toBottomOf="@+id/date_of_manufactureUpdate" />
 
     <EditText
-        android:id="@+id/storageAdd"
+        android:id="@+id/storageUpdate"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="25dp"
@@ -89,14 +89,14 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:textColor="@color/sprites"
-        app:layout_constraintBottom_toTopOf="@+id/descriptionAdd"
+        app:layout_constraintBottom_toTopOf="@+id/descriptionUpdate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/before_dateAdd" />
+        app:layout_constraintTop_toBottomOf="@+id/before_dateUpdate" />
 
     <EditText
-        android:id="@+id/descriptionAdd"
+        android:id="@+id/descriptionUpdate"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="25dp"
@@ -107,19 +107,19 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:textColor="@color/sprites"
-        app:layout_constraintBottom_toTopOf="@+id/btn_add"
+        app:layout_constraintBottom_toTopOf="@+id/btn_update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/storageAdd" />
+        app:layout_constraintTop_toBottomOf="@+id/storageUpdate" />
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/btn_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="176dp"
         android:backgroundTint="@color/sprites"
-        android:text="Добавить"
+        android:text="Изменить"
         android:textColor="@color/white"
         android:textSize="25dp"
         app:cornerRadius="10dp"

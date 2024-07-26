@@ -1,7 +1,6 @@
 package com.example.medicinesv2;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -16,6 +15,7 @@ public class ViewMedicinesActivity extends AppCompatActivity {
     Button btnAddMedicines;
     DatabaseManager dbManager;
     TableLayout tableLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,39 +28,63 @@ public class ViewMedicinesActivity extends AppCompatActivity {
             dbManager.open();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "ошибка в открытии базы данных", Toast.LENGTH_SHORT).show();
+            showToast("Ошибка в открытии базы данных");
+            return;
         }
 
         btnAddMedicines = findViewById(R.id.btn_view_add_medicines);
         btnAddMedicines.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), AddMedicinesActivity.class);
+                Intent intent = new Intent(ViewMedicinesActivity.this, AddMedicinesActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-        loadNewRow();
+        loadTableData();
     }
 
-    private void loadNewRow() {
+    private void loadTableData() {
+        tableLayout.removeAllViews();
+
+        ViewTable viewTable = new ViewTable(this);
+        TableRow header = viewTable.createHeader();
+        tableLayout.addView(header);
+
         Cursor cursor = dbManager.fetch();
-
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                int medID = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.MED_ID));
-                String name = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MED_NAME));
-                String dateBefore = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MED_BEFORE_DATE));
-
-                ViewTable viewTable = new ViewTable(this);
-                TableRow row = viewTable.addRow(name, dateBefore, medID);
-                tableLayout.addView(row);
-            } while (cursor.moveToNext());
-        }
-
         if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    int medID = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.MED_ID));
+                    String name = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MED_NAME));
+                    String dateBefore = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MED_BEFORE_DATE));
+
+                    TableRow row = viewTable.addRow(name, dateBefore, medID);
+                    tableLayout.addView(row);
+                } while (cursor.moveToNext());
+            }
             cursor.close();
+        } else {
+            showToast("Нет доступных данных");
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dbManager != null) {
+            dbManager.close();
+        }
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadTableData();
     }
 }

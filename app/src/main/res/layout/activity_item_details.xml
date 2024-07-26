@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ItemDetailsActivity"
-    android:background="@drawable/mainscreen">
+    android:background="@drawable/mainscreen"
+    tools:context=".ItemDetailsActivity">
 
     <TextView
-        android:id="@+id/textViewItemName"
+        android:id="@+id/textViewName"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="@color/sprites"
@@ -23,72 +23,91 @@
 
 
     <TextView
-        android:id="@+id/textViewdateOfManufacture"
+        android:id="@+id/textViewDateOfManufacture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="16dp"
+        android:textColor="@color/sprites"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/sprites"
-        app:layout_constraintBottom_toTopOf="@+id/textViewopenDateBefore"
+        app:layout_constraintBottom_toTopOf="@+id/textViewBeforeDate"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewItemName" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
 
     <TextView
-        android:id="@+id/textViewopenDateBefore"
+        android:id="@+id/textViewBeforeDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="16dp"
+        android:textColor="@color/sprites"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/sprites"
-        app:layout_constraintBottom_toTopOf="@+id/textViewdateBefore"
+        app:layout_constraintBottom_toTopOf="@+id/textViewStorage"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewdateOfManufacture" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDateOfManufacture" />
 
     <TextView
-        android:id="@+id/textViewdateBefore"
+        android:id="@+id/textViewStorage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="16dp"
+        android:textColor="@color/sprites"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/sprites"
-        app:layout_constraintBottom_toTopOf="@+id/textViewdescription"
+        app:layout_constraintBottom_toTopOf="@+id/textViewDescription"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewopenDateBefore" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewBeforeDate" />
 
     <TextView
-        android:id="@+id/textViewdescription"
+        android:id="@+id/textViewDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="16dp"
+        android:textColor="@color/sprites"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/sprites"
-        app:layout_constraintBottom_toTopOf="@+id/btn_delete"
+        app:layout_constraintBottom_toTopOf="@+id/btn_update"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewdateBefore" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewStorage" />
 
     <Button
         android:id="@+id/btn_delete"
         android:layout_width="193dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/sprites"
-        android:text="Удалить лекарство"
+        android:text="Удалить"
         android:textColor="@color/white"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewdescription" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_update" />
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="193dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/sprites"
+        android:text="Изменить"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 public class AddMedicinesActivity extends AppCompatActivity {
-    EditText editTextName, editTextDatOfManufacture, editTextBeforeDate, editTextStorage, editTextDescription;
+    EditText editTextNameAdd, editTextDatOfManufactureAdd, editTextBeforeDateAdd, editTextStorageAdd, editTextDescriptionAdd;
     Button btnAdd;
     DatabaseManager dbManager;
 
@@ -24,11 +24,11 @@ public class AddMedicinesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_medicines);
 
-        editTextName = findViewById(R.id.name);
-        editTextDatOfManufacture = findViewById(R.id.date_of_manufacture);
-        editTextBeforeDate= findViewById(R.id.before_date);
-        editTextStorage = findViewById(R.id.storage);
-        editTextDescription = findViewById(R.id.description);
+        editTextNameAdd = findViewById(R.id.nameAdd);
+        editTextDatOfManufactureAdd = findViewById(R.id.date_of_manufactureAdd);
+        editTextBeforeDateAdd= findViewById(R.id.before_dateAdd);
+        editTextStorageAdd = findViewById(R.id.storageAdd);
+        editTextDescriptionAdd = findViewById(R.id.descriptionAdd);
 
         dbManager = new DatabaseManager(this);
         try {
@@ -43,41 +43,41 @@ public class AddMedicinesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean isValid = true;
 
-                String name = editTextName.getText().toString().trim();
-                String dateOfManufacture = editTextDatOfManufacture.getText().toString().trim();
-                String beforeDate = editTextBeforeDate.getText().toString().trim();
-                String storage = editTextStorage.getText().toString().trim();
-                String description = editTextDescription.getText().toString().trim();
+                String nameAdd = editTextNameAdd.getText().toString().trim();
+                String dateOfManufactureAdd = editTextDatOfManufactureAdd.getText().toString().trim();
+                String beforeDateAdd = editTextBeforeDateAdd.getText().toString().trim();
+                String storageAdd = editTextStorageAdd.getText().toString().trim();
+                String descriptionAdd = editTextDescriptionAdd.getText().toString().trim();
 
-                if (name.isEmpty()) {
-                    editTextName.setError("Поле 'Название лекарства' не должно быть пустым");
+                if (nameAdd.isEmpty()) {
+                    editTextNameAdd.setError("Поле 'Название лекарства' не должно быть пустым");
                     isValid = false;
                 }
-                if (storage.isEmpty()) {
-                    storage = "-";
+                if (storageAdd.isEmpty()) {
+                    storageAdd = "-";
                 }
-                if (description.isEmpty()) {
-                    description = "-";
+                if (descriptionAdd.isEmpty()) {
+                    descriptionAdd = "-";
                 }
 
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
                 dateFormat.setLenient(false);
                 try {
-                    dateFormat.parse(dateOfManufacture);
+                    dateFormat.parse(dateOfManufactureAdd);
                 } catch (ParseException e) {
-                    editTextDatOfManufacture.setError("Неверный формат даты (дд/мм/гггг)");
+                    editTextDatOfManufactureAdd.setError("Неверный формат даты (дд/мм/гггг)");
                     isValid = false;
                 }
 
                 try {
-                    dateFormat.parse(beforeDate);
+                    dateFormat.parse(beforeDateAdd);
                 } catch (ParseException e) {
-                    editTextBeforeDate.setError("Неверный формат даты (дд/мм/гггг)");
+                    editTextBeforeDateAdd.setError("Неверный формат даты (дд/мм/гггг)");
                     isValid = false;
                 }
 
                 if (isValid) {
-                    dbManager.insert(name, dateOfManufacture, beforeDate, storage, description);
+                    dbManager.insert(nameAdd, dateOfManufactureAdd, beforeDateAdd, storageAdd, descriptionAdd);
                     Toast.makeText(AddMedicinesActivity.this, "Успешно добавлено", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(v.getContext(), ViewMedicinesActivity.class);
                     startActivity(intent);
