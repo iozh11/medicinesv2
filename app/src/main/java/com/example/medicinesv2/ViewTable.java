@@ -83,7 +83,7 @@ public class ViewTable {
                 intent.putExtra("MED_ID", medId);
                 context.startActivity(intent);
                 if (context instanceof Activity) {
-                    ((Activity) context).finish(); // Закрываем текущую Activity
+                    ((Activity) context).finish();
                 }
             }
         });

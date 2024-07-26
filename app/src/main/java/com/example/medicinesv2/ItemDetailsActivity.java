@@ -37,7 +37,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
             dbManager.open();
         } catch (Exception e) {
             e.printStackTrace();
-            showToast("Ошибка в открытии базы данных");
             return;
         }
 
@@ -85,14 +84,12 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 textDescription.setText(medDescription);
             }
             cursor.close();
-        } else {
-            showToast("Невозможно получить информацию об этом лекарственном средстве");
         }
     }
 
     private void deleteItem(int id) {
         dbManager.delete(id);
-        showToast("Лекарственное средство успешно удалено");
+        Toast.makeText(this, "Удалено", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, ViewMedicinesActivity.class);
         startActivity(intent);
         finish();
@@ -104,9 +101,5 @@ public class ItemDetailsActivity extends AppCompatActivity {
         if (dbManager != null) {
             dbManager.close();
         }
-    }
-
-    private void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

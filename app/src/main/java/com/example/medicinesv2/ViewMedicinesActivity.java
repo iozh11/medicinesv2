@@ -28,7 +28,6 @@ public class ViewMedicinesActivity extends AppCompatActivity {
             dbManager.open();
         } catch (Exception e) {
             e.printStackTrace();
-            showToast("Ошибка в открытии базы данных");
             return;
         }
 
@@ -65,8 +64,6 @@ public class ViewMedicinesActivity extends AppCompatActivity {
                 } while (cursor.moveToNext());
             }
             cursor.close();
-        } else {
-            showToast("Нет доступных данных");
         }
     }
 
@@ -76,10 +73,6 @@ public class ViewMedicinesActivity extends AppCompatActivity {
         if (dbManager != null) {
             dbManager.close();
         }
-    }
-
-    private void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override

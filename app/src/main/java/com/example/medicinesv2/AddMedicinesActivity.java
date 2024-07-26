@@ -50,7 +50,7 @@ public class AddMedicinesActivity extends AppCompatActivity {
                 String descriptionAdd = editTextDescriptionAdd.getText().toString().trim();
 
                 if (nameAdd.isEmpty()) {
-                    editTextNameAdd.setError("Поле 'Название лекарства' не должно быть пустым");
+                    editTextNameAdd.setError("Заполните название");
                     isValid = false;
                 }
                 if (storageAdd.isEmpty()) {
@@ -65,20 +65,20 @@ public class AddMedicinesActivity extends AppCompatActivity {
                 try {
                     dateFormat.parse(dateOfManufactureAdd);
                 } catch (ParseException e) {
-                    editTextDatOfManufactureAdd.setError("Неверный формат даты (дд/мм/гггг)");
+                    editTextDatOfManufactureAdd.setError("Неверный формат даты дд/мм/гггг");
                     isValid = false;
                 }
 
                 try {
                     dateFormat.parse(beforeDateAdd);
                 } catch (ParseException e) {
-                    editTextBeforeDateAdd.setError("Неверный формат даты (дд/мм/гггг)");
+                    editTextBeforeDateAdd.setError("Неверный формат даты дд/мм/гггг");
                     isValid = false;
                 }
 
                 if (isValid) {
                     dbManager.insert(nameAdd, dateOfManufactureAdd, beforeDateAdd, storageAdd, descriptionAdd);
-                    Toast.makeText(AddMedicinesActivity.this, "Успешно добавлено", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddMedicinesActivity.this, "Добавлено", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(v.getContext(), ViewMedicinesActivity.class);
                     startActivity(intent);
                     finish();

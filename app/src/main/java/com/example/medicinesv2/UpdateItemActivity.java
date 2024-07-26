@@ -65,7 +65,7 @@ public class UpdateItemActivity extends AppCompatActivity {
                 String descriptionUpdate = editTextDescriptionUpdate.getText().toString().trim();
 
                 if (nameUpdate.isEmpty()) {
-                    editTextNameUpdate.setError("Поле 'Название лекарства' не должно быть пустым");
+                    editTextNameUpdate.setError("Заполните название");
                     isValid = false;
                 }
                 if (storageUpdate.isEmpty()) {
@@ -80,20 +80,20 @@ public class UpdateItemActivity extends AppCompatActivity {
                 try {
                     dateFormat.parse(dateOfManufactureUpdate);
                 } catch (ParseException e) {
-                    editTextDatOfManufactureUpdate.setError("Неверный формат даты (дд/мм/гггг)");
+                    editTextDatOfManufactureUpdate.setError("Неверный формат даты дд/мм/гггг");
                     isValid = false;
                 }
 
                 try {
                     dateFormat.parse(beforeDateUpdate);
                 } catch (ParseException e) {
-                    editTextBeforeDateUpdate.setError("Неверный формат даты (дд/мм/гггг)");
+                    editTextBeforeDateUpdate.setError("Неверный формат даты дд/мм/гггг");
                     isValid = false;
                 }
 
                 if (isValid) {
                     dbManager.update(id, nameUpdate, dateOfManufactureUpdate, beforeDateUpdate, storageUpdate, descriptionUpdate);
-                    Toast.makeText(UpdateItemActivity.this, "Успешно измененно", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateItemActivity.this, "Измененно", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(v.getContext(), ViewMedicinesActivity.class);
                     startActivity(intent);
                     finish();
